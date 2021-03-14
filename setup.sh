@@ -10,3 +10,4 @@ sudo tee /etc/docker/daemon.json << EOF
     "default-runtime": "nvidia"
 }
 EOF
+sudo systemctl restart docker
