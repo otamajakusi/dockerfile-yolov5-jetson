@@ -29,3 +29,9 @@ cp my-weights.pt /path/to/weights
 xhost +local:
 docker run -it --rm --runtime nvidia --network host --device /dev/video0:/dev/video0:mrw -e DISPLAY=$DISPLAY -v /tmp/.X11-unix/:/tmp/.X11-unix -v /path/to/weights:/weights yolov5 python3 detect.py --source 0 --weights /weights/my-weights.pt
 ```
+
+## run csi-camera sample
+for more details: https://github.com/JetsonHacksNano/CSI-Camera
+```
+./run-csi-camera.sh
+```
