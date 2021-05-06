@@ -2,7 +2,7 @@ FROM nvcr.io/nvidia/l4t-pytorch:r32.5.0-pth1.6-py3
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt update
+RUN apt-get update
 RUN apt install -y cmake libgtk2.0-dev wget
 # ffmpeg
 RUN apt install -y libavcodec-dev libavformat-dev libavutil-dev libswscale-dev libavresample3
