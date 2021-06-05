@@ -15,6 +15,7 @@ RUN gdown https://drive.google.com/uc?id=1V231Nmx42vXTo5nq_YsV_BouZwBE9vjh
 # RUN wget https://nvidia.box.com/shared/static/p57jwntv436lfrd78inwl7iml6p13fzh.whl -O torch-1.8.0-cp36-cp36m-linux_aarch64.whl
 RUN python3.8 -m pip install torch-1.8.0a0+56b43f4-cp38-cp38-linux_aarch64.whl
 RUN git clone https://github.com/pytorch/vision torchvision
+RUN apt install libomp5
 RUN cd torchvision && git checkout v0.9.0 && python3.8 setup.py install
 
 RUN python3.8 -m pip install scikit-build
