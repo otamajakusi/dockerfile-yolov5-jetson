@@ -21,6 +21,11 @@ Make sure this takes a few hours.
 ./build.sh
 ```
 
+real    140m18.467s  
+user    0m2.160s  
+sys     0m1.524s  
+
+
 If the build fails, use `--no-cache` option to clean the docker build cache.
 
 ```bash

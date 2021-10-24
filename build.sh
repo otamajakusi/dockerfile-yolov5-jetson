@@ -7,7 +7,7 @@ if [ ! -f /etc/nv_tegra_release ]; then
 fi
 if [[ $(cat /etc/nv_tegra_release) =~ ^.*REVISION:[^\S]([0-9]*\.[0-9]).*$ ]]; then
     case ${BASH_REMATCH[1]} in
-        5.*) sudo docker build -t yolov5 . $1 ;;
+        [56].*) sudo docker build -t yolov5 . $1 ;;
         * ) echo "unknown jetpack ${BASH_REMATCH[1]}"
             exit 1 ;;
     esac
