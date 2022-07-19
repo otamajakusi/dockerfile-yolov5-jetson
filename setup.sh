@@ -1,5 +1,8 @@
 #!/bin/bash
-sudo tee /etc/docker/daemon.json << EOF
+if ! apt list --installed 2> /dev/null | grep nvidia-container-runtime; then
+    apt update && apt install -y nvidia-container-runtime
+fi
+tee /etc/docker/daemon.json << EOF
 {
     "runtimes": {
         "nvidia": {
@@ -10,4 +13,4 @@ sudo tee /etc/docker/daemon.json << EOF
     "default-runtime": "nvidia"
 }
 EOF
-sudo systemctl restart docker
+systemctl restart docker

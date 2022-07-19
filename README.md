@@ -9,7 +9,7 @@ All operations below should be done on Jetson platform.
 This operation makes default docker runtime 'nvidia'.
 
 ```bash
-./setup.sh
+sudo ./setup.sh
 ```
 
 ## build
