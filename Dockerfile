@@ -22,6 +22,6 @@ RUN cd torchvision && python3.8 setup.py install
 RUN python3.8 -m pip install scikit-build
 RUN git clone --recursive --depth=1 --recurse-submodules --shallow-submodules https://github.com/skvark/opencv-python.git
 RUN cd opencv-python && python3.8 -m pip wheel . --verbose && find . -name "opencv_python*.whl" | xargs python3.8 -m pip install
-RUN git clone https://github.com/ultralytics/yolov5.git
+RUN git clone https://github.com/ultralytics/yolov5.git -b v6.1
 RUN cd yolov5 && python3.8 -m pip install -r requirements.txt
 WORKDIR /yolov5
