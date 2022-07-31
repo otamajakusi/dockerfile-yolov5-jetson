@@ -1,6 +1,7 @@
 #!/bin/bash
-if ! apt list --installed 2> /dev/null | grep nvidia-container-runtime; then
-    apt update && apt install -y nvidia-container-runtime
+nvidia_containe_installed=$(apt list nvidia-container --installed 2> /dev/null | wc -l)
+if [ ${nvidia_containe_installed} = 1 ]; then
+    apt update && apt install -y nvidia-container
 fi
 tee /etc/docker/daemon.json << EOF
 {
