@@ -56,7 +56,7 @@ docker run -it --rm \
            -e LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1 \
            -v /tmp/.X11-unix/:/tmp/.X11-unix \
            -v /path/to/weights:/weights \
-           yolov5 python3 detect.py --source 0 --weights /weights/my-weights.pt
+           yolov5 python3.8 detect.py --source 0 --weights /weights/my-weights.pt
 ```
 
 ## run csi-camera sample

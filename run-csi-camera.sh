@@ -10,4 +10,4 @@ docker run -it --rm \
       -v /tmp/.X11-unix/:/tmp/.X11-unix \
       -v /tmp/argus_socket:/tmp/argus_socket \
       -v $(pwd):/csi-camera \
-      yolov5 python3 /csi-camera/simple_camera.py
+      yolov5 python3.8 /csi-camera/simple_camera.py
