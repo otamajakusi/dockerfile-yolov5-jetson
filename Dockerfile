@@ -22,4 +22,5 @@ RUN git clone https://github.com/ultralytics/yolov5.git
 WORKDIR yolov5
 RUN python3.8 -m pip install -r requirements.txt
 COPY is_docker.patch .
+COPY gstreamer.patch .
 RUN patch -p1 < is_docker.patch

@@ -1,0 +1,39 @@
+diff --git a/utils/dataloaders.py b/utils/dataloaders.py
+index d849d51..b4a5fbc 100644
+--- a/utils/dataloaders.py
++++ b/utils/dataloaders.py
+@@ -359,7 +359,7 @@ class LoadStreams:
+             if s == 0:
+                 assert not is_colab(), '--source 0 webcam unsupported on Colab. Rerun command in a local environment.'
+                 assert not is_kaggle(), '--source 0 webcam unsupported on Kaggle. Rerun command in a local environment.'
+-            cap = cv2.VideoCapture(s)
++            cap = cv2.VideoCapture(self._gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
+             assert cap.isOpened(), f'{st}Failed to open {s}'
+             w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
+             h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
+@@ -420,6 +420,25 @@ class LoadStreams:
+     def __len__(self):
+         return len(self.sources)  # 1E12 frames = 32 streams at 30 FPS for 30 years
+ 
++    def _gstreamer_pipeline(
++        self,
++        capture_width=1280,
++        capture_height=720,
++        display_width=1280,
++        display_height=720,
++        framerate=60,
++        flip_method=0,
++    ):
++        return (
++            "nvarguscamerasrc ! "
++            "video/x-raw(memory:NVMM), "
++            f"width=(int){capture_width}, height=(int){capture_height}, "
++            f"format=(string)NV12, framerate=(fraction){framerate}/1 ! "
++            f"nvvidconv flip-method={flip_method} ! "
++            f"video/x-raw, width=(int){display_width}, height=(int){display_height}, format=(string)BGRx ! "
++            "videoconvert ! "
++            "video/x-raw, format=(string)BGR ! appsink"
++        )
+ 
+ def img2label_paths(img_paths):
+     # Define label paths as a function of image paths
