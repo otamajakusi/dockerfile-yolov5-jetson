@@ -18,6 +18,8 @@ RUN python3.8 -m pip install torch-*.whl
 RUN gdown https://drive.google.com/uc?id=1m0d8ruUY8RvCP9eVjZw4Nc8LAwM8yuGV
 RUN python3.8 -m pip install torchvision-*.whl
 
-RUN git clone https://github.com/ultralytics/yolov5.git -b v6.1
-RUN cd yolov5 && python3.8 -m pip install -r requirements.txt
-WORKDIR /yolov5
+RUN git clone https://github.com/ultralytics/yolov5.git
+WORKDIR yolov5
+RUN python3.8 -m pip install -r requirements.txt
+COPY is_docker.patch .
+RUN patch -p1 < is_docker.patch

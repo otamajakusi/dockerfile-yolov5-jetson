@@ -1,0 +1,12 @@
+diff --git a/utils/general.py b/utils/general.py
+index d31b043..a3fcec4 100644
+--- a/utils/general.py
++++ b/utils/general.py
+@@ -79,6 +79,7 @@ def is_kaggle():
+ 
+ 
+ def is_docker() -> bool:
++    return False
+     """Check if the process runs inside a docker container."""
+     if Path("/.dockerenv").exists():
+         return True
