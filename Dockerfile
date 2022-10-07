@@ -11,7 +11,7 @@ RUN python3.8 -m pip install --upgrade pip
 RUN python3.8 -m pip install setuptools gdown
 
 # opencv 4.6.0
-RUN apt-get list --installed | grep -i opencv | xargs apt purge -y
+RUN apt list --installed | grep -i opencv | xargs apt purge -y
 RUN gdown https://drive.google.com/uc?id1VPU1oUO0_trI8Dm1AJ5UVTEGzqcnl3HU
 RUN gdown https://drive.google.com/uc?id1Z4yKz_5azGbqq3aslc7k0WAwR-yF4Mgc
 RUN gdown https://drive.google.com/uc?id1ZNio67dove9W5kMHqz_nmvmf1GR2y3hQ
