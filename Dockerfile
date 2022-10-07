@@ -2,14 +2,15 @@ FROM nvcr.io/nvidia/l4t-base:r32.7.1
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN apt-get update && apt-get install -y \
+      git gnupg2 \
+      python3.8 python3.8-dev python3-pip \
+      libopenmpi-dev libomp-dev libopenblas-dev libblas-dev libeigen3-dev
+
 RUN apt-key adv --fetch-key http://repo.download.nvidia.com/jetson/jetson-ota-public.asc
 RUN echo 'deb https://repo.download.nvidia.com/jetson/common r32.7 main\n\
 deb https://repo.download.nvidia.com/jetson/t210 r32.7 main' > /etc/apt/sources.list.d/nvidia-l4t-apt-source.list
-
-RUN apt-get update && apt-get install -y \
-      git \
-      python3.8 python3.8-dev python3-pip \
-      libopenmpi-dev libomp-dev libopenblas-dev libblas-dev libeigen3-dev
+RUN apt-get update
 
 RUN python3.8 -m pip install --upgrade pip
 RUN python3.8 -m pip install setuptools gdown
