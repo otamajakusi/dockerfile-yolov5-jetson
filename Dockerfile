@@ -2,6 +2,10 @@ FROM nvcr.io/nvidia/l4t-base:r32.7.1
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN apt-key adv --fetch-key http://repo.download.nvidia.com/jetson/jetson-ota-public.asc
+RUN echo 'deb https://repo.download.nvidia.com/jetson/common r32.7 main\n\
+deb https://repo.download.nvidia.com/jetson/t210 r32.7 main' > /etc/apt/sources.list.d/nvidia-l4t-apt-source.list
+
 RUN apt-get update && apt-get install -y \
       git \
       python3.8 python3.8-dev python3-pip \
@@ -12,12 +16,12 @@ RUN python3.8 -m pip install setuptools gdown
 
 # opencv 4.6.0
 RUN apt list --installed | grep -i opencv | xargs apt purge -y
-RUN gdown https://drive.google.com/uc?id1VPU1oUO0_trI8Dm1AJ5UVTEGzqcnl3HU
-RUN gdown https://drive.google.com/uc?id1Z4yKz_5azGbqq3aslc7k0WAwR-yF4Mgc
-RUN gdown https://drive.google.com/uc?id1ZNio67dove9W5kMHqz_nmvmf1GR2y3hQ
-RUN gdown https://drive.google.com/uc?id1_loSh1aD6_FARGhVNFIBz2W4lSw7dfqN
-RUN gdown https://drive.google.com/uc?id1dWN5QWx-8htYURSELGbj4caqHY1228HL
-RUN gdown https://drive.google.com/uc?id1uMfj78AxtDaIirnR5T_qfWsE4Xf8WdJP
+RUN gdown https://drive.google.com/uc?id=1VPU1oUO0_trI8Dm1AJ5UVTEGzqcnl3HU
+RUN gdown https://drive.google.com/uc?id=1Z4yKz_5azGbqq3aslc7k0WAwR-yF4Mgc
+RUN gdown https://drive.google.com/uc?id=1ZNio67dove9W5kMHqz_nmvmf1GR2y3hQ
+RUN gdown https://drive.google.com/uc?id=1_loSh1aD6_FARGhVNFIBz2W4lSw7dfqN
+RUN gdown https://drive.google.com/uc?id=1dWN5QWx-8htYURSELGbj4caqHY1228HL
+RUN gdown https://drive.google.com/uc?id=1uMfj78AxtDaIirnR5T_qfWsE4Xf8WdJP
 RUN apt-get install -y ./OpenCV*.deb
 
 # pytorch 1.11.0

@@ -7,12 +7,13 @@ fi
 
 xhost +local:
 sudo docker run \
-       -it \
-       --rm \
-       --runtime nvidia \
-       --network host \
-       --device /dev/video0:/dev/video0:mrw \
-       -e DISPLAY=$DISPLAY \
-       -e LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1 \
-       -v /tmp/.X11-unix/:/tmp/.X11-unix \
-       yolov5 ${cmd}
+    -it \
+    --rm \
+    --runtime nvidia \
+    --network host \
+    --device /dev/video0:/dev/video0:mrw \
+    -e DISPLAY=$DISPLAY \
+    -e LD_PRELOAD=/usr/lib/aarch64-linux-gnu/libgomp.so.1 \
+    -v /tmp/.X11-unix/:/tmp/.X11-unix \
+    -v /tmp/argus_socket:/tmp/argus_socket \
+    yolov5 ${cmd}
