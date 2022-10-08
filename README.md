@@ -8,6 +8,10 @@ All operations below should be done on Jetson platform.
 
 This operation build docker image named 'yolov5'.
 
+```bash
+./build.sh
+```
+
 If the build fails, use `--no-cache` option to clean the docker build cache.
 
 ```bash
